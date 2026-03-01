@@ -1,0 +1,14 @@
+url pline " https://prod.spline.design/aPpatXfWycSXu6FH/scene.splinecode"
+pline code intégré : "import Spline from '@splinetool/react-spline/next';
+
+export default function Home() {
+  return (
+    <main>
+      <Spline
+        scene="https://prod.spline.design/aPpatXfWycSXu6FH/scene.splinecode" 
+      />
+    </main>
+  );
+}
+
+"

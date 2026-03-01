@@ -1,0 +1,160 @@
+    {
+        id: 'ariss',
+        icon: '📡',
+        label: 'ARISS',
+        title: 'Antennes ARISS',
+        texte : 'Petite antenne VHF/UHF (quart d’onde ou dipôle) sur Zvezda, polarisation circulaire effective après ionosphère.
+
+Fréquence école : 145,800 MHz FM (phonie), puissance ~10-25 W max → signal reçu au sol très faible (-140 dBm typique).
+
+Sol (station IUT idéale) :
+
+Yagi VHF 3-7 éléments (gain 10-14 dBi), polarisation circulaire (RHCP/LHCP switchable).
+
+Montée sur rotors AZ/EL pilotés par logiciel (suivi orbital ISS via TLE, azimut 0-360°, élévation 0-180°).
+
+25-50 W émission, préampli LNA (15-20 dB gain) au mât, câble LMR-400/Heliax.
+
+Opération :
+
+Passage ISS : élév. >15°, durée 6-9 min, Doppler ±3 kHz (TX sol 145,800 ; RX ISS 145,990 ou cross-band).
+
+Logiciels : Orbitron/GPSGate (trajectoire), Ham Radio Deluxe/MMTTY (modulation, correction auto Doppler).'
+        // ... (etc)
+        position: [3.55, 2.89, -2.24], 
+    },
+
+
+
+    {
+        id: 'Panneau Solaire',
+        icon: '📡',
+        label: 'Panneau Solaire',
+        title: 'Panneau Solaire',
+        texte : ' Panneaux solaires et radiateurs
+
+Rôle : fournissent la totalité de la puissance électrique de la station et évacuent la chaleur.
+
+Arrivée : ajoutés progressivement avec les segments de treillis P4/S4 (2006), P6, S6 (2009), plus panneaux iROSA ajoutés en 2021 et 2023 pour augmenter la puissance.'
+        // ... (etc)
+        position: [4.32, 2.99, 4.06],  <--- C'est ici ! Remplace ça par les chiffres de ton double-clic !
+    },
+
+    {
+        id: 'Coupole',
+        icon: '📡',
+        label: 'Coupole',
+        title: 'Coupole',
+        texte : 'Sur Tranquility (Node 3), 7 hublots (Ø 80 cm sup), dôme Ø 4,5 m en verre silice blindé (20-35 mm).
+
+Rôles : vue 360° Terre (Sophie voit Bordeaux/NA), contrôle Canadarm2, photo/science.
+
+Montée 2010 (STS-130), anti-UV/IR, accès gym/salle contrôle.'
+        // ... (etc)
+        position: [-0.80, 2.48, -2.37],  <--- C'est ici ! Remplace ça par les chiffres de ton double-clic !
+    },
+
+        id: 'BRAS ROBOTISER',
+        icon: '📡',
+        label: 'BRAS ROBOTISER',
+        title: 'BRAS ROBOTISER',
+        texte : 'Essentiel :
+
+Bras robotique canadien (17,6 m long, 1 800 kg), 7 articulations (épaule/coude/poignet), capacité 116 t.
+
+Extrémités : 2 "mains" (LEE) interchangeables pour s’accrocher aux PDGF sur l’ISS et "marcher" autour.
+
+Glisse sur MBS (chariot rail truss), contrôle via Coupole ou consoles internes.
+
+Rôles :
+
+Capture cargos (Dragon, Cygnus), maintenance externe, installation équipements, aide EVA.
+
+Livré 2001 (STS-100), + Dextre (2008) pour précision fine.'
+        // ... (etc)
+        position: [1.89, 2.12, -0.81],  <--- C'est ici ! Remplace ça par les chiffres de ton double-clic !
+    },
+
+            id: 'Radiateur',
+        icon: '📡',
+        label: 'Radiateur',
+        title: 'Radiateur',
+        texte : 'Essentiel :
+
+14 grands panneaux aluminium (6 m² chacun) sur la poutre truss (segments P4/S4, P6/S6), orientables face Terre/espace.
+
+Rôle : rejeter la chaleur (électronique, astronautes, expériences) par rayonnement IR dans le vide spatial (pas de convection possible).
+
+Boucles fluides : eau intérieure → ammoniac extérieure → radiateurs (évite gel à -77°C ombre Terre).
+
+Fonctions :
+
+Maintenir 21-23°C intérieur malgré +120°C Soleil / -160°C ombre (toutes 45 min).
+
+Puissance dissipée : ~70 kW (chaleur des 90-110 kW panneaux solaires).
+
+Pitch élèves : "Les radiateurs ISS rejettent la chaleur de tous les ordinateurs pendant que Sophie vous parle depuis l’espace froid !"
+
+Data diapo : 14 panneaux 6 m², rayonnement IR, 21-23°C intérieur, boucles eau/ammoniac.'
+        // ... (etc)
+        position: [0.79, 3.21, 2.73],  <--- C'est ici ! Remplace ça par les chiffres de ton double-clic !
+    },
+
+        {
+        id: 'Labo européen colobus',
+        icon: '📡',
+        label: 'Labo européen colobus',
+        title: 'Labo européen colobus',
+       texte : 'Essentiel :
+
+Module ESA Ø 4,5 m × 6,9 m (75 m³ total, 25 m³ utilisable), 10 racks ISPR interchangeables (500 kg chacun).
+
+Attaché à Harmony (Node 2) depuis février 2008 (STS-122).
+
+Rôles :
+
+Microgravité : biologie (Biolab), fluides (FSL), physiologie humaine (EPM/HRF), matériaux.
+
+Puissance : 13,5 kW science (sur 20 kW fournis), contrôle depuis Oberpfaffenhofen (Allemagne).
+
+Extérieur : 4 palettes + Bartolomeo (plateforme commerciale vue Terre/espace).
+
+Pitch élèves : "Dans Columbus, Sophie Adenot pourra lancer des expériences européennes pendant votre contact radio !"
+
+Data diapo : 10 racks, 75 m³, 2008, biologie/fluides/physio.'
+        position: [-0.62, 2.59, -1.90],  <--- C'est ici ! Remplace ça par les chiffres de ton double-clic !
+    },
+
+        {
+        id: 'Labo japonais colobus',
+        icon: '📡',
+        label: 'Labo japonais colobus',
+        title: 'Labo japonais colobus',
+        texte : 'Essentiel :
+
+JEM (Ø 4,4 m × 11,2 m, 75 m³ pressurisé + EF extérieure), 23 racks intérieurs + 10 palettes extérieures.
+
+Attaché à Harmony (Node 2) depuis juin 2008 (complété 2009 STS-127).
+
+Rôles :
+
+PM (pressurisé) : biologie cellules (SAIBO), fluides/cristaux (RYUTAI), glovebox sciences vie.
+
+EF (exposé au vide) : observations Terre/ciel, expériences long terme via sas + bras JEMRMS (10 m).
+
+Contrôle depuis Tsukuba (Japon), puissance 10 kW science.
+
+Pitch élèves : "Kibo observe la Terre et teste des robots pendant que Sophie vous parle depuis l’ISS !"
+
+Data diapo : 23 racks + EF, 11,2 m, 2008-2009, biologie/fluides/extérieur.'
+        // ... (etc)
+        position: [-2.08, 2.56, -0.25],  <--- C'est ici ! Remplace ça par les chiffres de ton double-clic !
+    },
+        {
+        id: 'Module D'habitation',
+        icon: '📡',
+        label: 'Module D'habitation',
+        title: 'Module D'habitation',
+        // ... (etc)
+        position: [0.22, 3.15, -0.27],  <--- C'est ici ! Remplace ça par les chiffres de ton double-clic !
+    },

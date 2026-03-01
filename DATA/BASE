@@ -1,0 +1,21 @@
+Partie 1 : Le Dossier de Conception à fournir à Antigravity 
+Phase Base : Cibler les raisons du site
+
+Quel problème ce dashboard/site résout-il ?
+Il transforme une affiche papier statique en une expérience interactive grand public. Il doit vulgariser des concepts techniques pointus (comme les communications radio ARISS et le décodage SSTV) en métaphores visuelles très simples à comprendre sur un petit écran.
+
+Qui est l'utilisateur ?
+Une personne lambda, curieuse mais sans bagage scientifique (passant, étudiant, famille). L'utilisateur est sur son smartphone, debout devant l'affiche, avec un temps d'attention très court. Il veut un effet "Wahou" immédiat et un accès rapide à l'information après avoir scanné le QR Code.
+
+Quelle décision l'utilisateur est-il ici pour prendre ?
+Il doit choisir instinctivement sur quelle partie de la station spatiale appuyer pour découvrir "comment ça marche". Le parcours doit être ludique et sans friction.
+
+Design Info & Identité Visuelle
+
+Format : Strictement "Mobile-First" (interface pensée pour téléphone).
+
+UI/UX : Boutons très larges pour faciliter le clic (Thumb-friendly). Textes très courts (format tweet).
+
+Couleurs : Fond spatial profond (Bleu nuit #050B14), contrastes élevés pour la lisibilité en extérieur. Accents lumineux (Cyan néon #00F0FF) pour indiquer les zones cliquables.
+
+Style Graphique : "Glassmorphism" pour les fenêtres d'information (cartes semi-transparentes avec un léger flou) superposées à la scène spatiale centrale.

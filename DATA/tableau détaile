@@ -1,0 +1,8 @@
+1. Document de Mapping : "Extension Interactive Mission Sophie"
+Élément (ID),Titre de l'Interaction,Contenu Explicatif (Vulgarisation),Focus Technique (Ingénierie)
+MOD_ZVEZDA,Relais Radio Zvezda,"C'est le ""téléphone"" de l'ISS. Il permet de parler avec les écoles sur Terre.",Équipé d'antennes ARISS et d'émetteurs Kenwood (145.990 MHz).
+MOD_COUPOLE,Fenêtre panoramique,La plus belle vue du monde pour surveiller la Terre et prendre des photos.,Structure de 7 fenêtres utilisée pour l'observation terrestre et robotique.
+MOD_SOLAR,Panneaux Solaires,Ils transforment la lumière du Soleil en électricité pour toute la station.,Fournissent l'énergie nécessaire aux laboratoires et au support de vie.
+MOD_RADS,Radiateurs,"Comme un frigo, ils rejettent la chaleur accumulée vers le vide spatial.",Crucial pour maintenir une température stable à l'intérieur des modules.
+MOD_ARM,Bras Robotique,"C'est le ""bras fort"" de la station pour déplacer le fret lourd.",Utilisé pour l'amarrage des vaisseaux et l'aide aux sorties extra-véhiculaires.
+MOD_SSTV,Images SSTV,Recevez des photos de l'espace directement sur votre simple récepteur au sol.,Protocole Slow Scan Television diffusé sur 437.800 MHz.

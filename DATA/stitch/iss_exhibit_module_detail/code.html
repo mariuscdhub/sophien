@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ISS Exhibit: Module Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00eeff",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "surface-dark": "#162e31",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen font-display flex flex-col items-center justify-center text-slate-900 dark:text-slate-100 overflow-x-hidden selection:bg-primary selection:text-black">
+<div class="relative flex h-full min-h-screen w-full max-w-md flex-col overflow-hidden bg-background-light dark:bg-background-dark shadow-2xl">
+<!-- Header -->
+<div class="flex items-center justify-between p-6 pb-2 z-10">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full bg-surface-dark/50 text-primary hover:bg-surface-dark transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back</span>
+</button>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-wider uppercase text-center flex-1">Comm Module</h2>
+<button class="flex size-10 items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 24px;">menu</span>
+</button>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col px-6 py-4 overflow-y-auto z-10">
+<!-- 3D Visualization Container -->
+<div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-b from-surface-dark to-background-dark border border-white/5 shadow-[0_0_30px_rgba(0,238,255,0.05)] group">
+<!-- Grid Overlay Effect -->
+<div class="absolute inset-0 bg-[linear-gradient(rgba(0,238,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,238,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
+<!-- Main Visual -->
+<div class="absolute inset-0 flex items-center justify-center p-8">
+<div class="w-full h-full bg-contain bg-center bg-no-repeat drop-shadow-[0_0_15px_rgba(0,238,255,0.3)] transform transition-transform duration-700 group-hover:scale-105" data-alt="3D wireframe render of ISS communication module" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDOpGAbv50N_M1T6t08Q3kjXEZVE5SP7c3joIVjX_G_vZtutWrvppYj6T_85X-0oEicO7KCkbsj7Ts1ISFkksT12m3l5mj5-wAq3jQRmoUD8jOvFeYEUXctsnE1rcPPvkgoVxqgfyIe91-ro2Btg-GWbnD__swkwWlMiMtpJsVboHz-nsU3fiajHQ0lcaFWUKuGPCFx3oUwvHyaKWDhzXtQK9ax7x5DsoH1EzI2i0wslWSipcqABAbl1LDYEHcOeFaTOOsf5I4x1rw");'>
+</div>
+</div>
+<!-- HUD Elements -->
+<div class="absolute top-4 left-4 flex flex-col gap-1">
+<span class="text-[10px] text-primary/60 font-bold tracking-[0.2em] uppercase">Status</span>
+<span class="text-xs text-primary font-bold flex items-center gap-1">
+<span class="block w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                        ONLINE
+                    </span>
+</div>
+<div class="absolute bottom-4 right-4 text-right">
+<span class="text-[10px] text-white/40 font-mono">ID: COMM-SAT-09</span>
+</div>
+</div>
+<!-- Description Block -->
+<div class="mt-6 flex flex-col gap-3">
+<div class="flex items-center gap-2 mb-1">
+<div class="h-px w-8 bg-primary"></div>
+<h3 class="text-xl font-bold text-white tracking-wide">Telemetry &amp; Data</h3>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed">
+                    This module handles all incoming and outgoing signals, ensuring constant contact with Mission Control in Houston and Moscow. It features high-gain antennas capable of transmitting high-definition video streams and complex telemetry data in real-time.
+                </p>
+<!-- Stats Grid -->
+<div class="grid grid-cols-2 gap-3 mt-4">
+<div class="bg-surface-dark/50 p-3 rounded-lg border border-white/5 backdrop-blur-sm">
+<p class="text-[10px] text-primary/70 uppercase tracking-wider mb-1">Bandwidth</p>
+<p class="text-white font-mono text-lg">300 Mbps</p>
+</div>
+<div class="bg-surface-dark/50 p-3 rounded-lg border border-white/5 backdrop-blur-sm">
+<p class="text-[10px] text-primary/70 uppercase tracking-wider mb-1">Latency</p>
+<p class="text-white font-mono text-lg">240 ms</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="p-6 pt-2 pb-8 w-full z-10">
+<button class="relative w-full group overflow-hidden rounded-lg bg-transparent border border-primary text-primary hover:bg-primary hover:text-background-dark transition-all duration-300 h-14 font-bold tracking-wider uppercase">
+<span class="absolute inset-0 w-full h-full bg-primary/10 group-hover:bg-transparent transition-colors"></span>
+<span class="relative flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                    Back to Main View
+                </span>
+</button>
+</div>
+<!-- Background Ambience -->
+<div class="absolute inset-0 pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[100px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-primary/5 blur-[120px] rounded-full"></div>
+</div>
+</div>
+</body></html>
