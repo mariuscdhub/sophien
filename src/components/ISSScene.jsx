@@ -60,9 +60,9 @@ export default function ISSScene({ onLoaded, onHotspotClick }) {
     return (
         <Canvas
             camera={{ position: [0, 2, 25], fov: 45 }}
-            gl={{ antialias: false, alpha: false, powerPreference: "high-performance" }}
+            gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
             dpr={1} // Lock pixel ratio mathematically to 1 for max performance
-            style={{ background: '#050B14' }}
+            style={{ background: 'transparent' }}
         >
             {/* Lighting to simulate space sun on solar panels */}
             <ambientLight intensity={0.4} color="#b0c4de" />

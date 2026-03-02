@@ -40,8 +40,13 @@ export default function App() {
             <Galaxy
                 transparent={true}
                 starSpeed={0.5}
-                density={1.5}
-                twinkleIntensity={0.6}
+                density={2.5}
+                twinkleIntensity={0.8}
+                glowIntensity={0.6}
+                saturation={0.7}
+                hueShift={220}
+                rotationSpeed={0.05}
+                speed={0.8}
             />
 
             {/* 3D Canvas — mounted when past intro so GLB preloads during intro */}
