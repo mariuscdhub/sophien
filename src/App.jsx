@@ -9,7 +9,6 @@ import IntroScreen from './components/IntroScreen'
 import TimelinePanel from './components/TimelinePanel'
 import InfoPanel from './components/InfoPanel'
 import BottomNav from './components/BottomNav'
-import Galaxy from './components/Galaxy'
 
 export default function App() {
     // === App flow states ===
@@ -36,18 +35,7 @@ export default function App() {
 
     return (
         <div className="fixed inset-0 overflow-hidden" style={{ background: '#050B14' }}>
-            {/* Star field — always visible */}
-            <Galaxy
-                transparent={true}
-                starSpeed={0.5}
-                density={2.5}
-                twinkleIntensity={0.8}
-                glowIntensity={0.6}
-                saturation={0.7}
-                hueShift={220}
-                rotationSpeed={0.05}
-                speed={0.8}
-            />
+            {/* No space background */}
 
             {/* 3D Canvas — mounted when past intro so GLB preloads during intro */}
             <AnimatePresence>
