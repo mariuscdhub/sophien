@@ -26,6 +26,24 @@ function ISSModel({ onLoaded, onHotspotClick }) {
         return () => clearTimeout(t)
     }, [onLoaded, scene])
 
+    const handleDoubleClick = (e) => {
+        e.stopPropagation(); // Empêche de cliquer dans le vide
+        if (hotspotsRef.current) {
+            // Convertit le point cliqué (monde) en coordonnées relatives au groupe des hotspots
+            const localPoint = hotspotsRef.current.worldToLocal(e.point.clone());
+            const coordStr = `[${localPoint.x.toFixed(2)}, ${localPoint.y.toFixed(2)}, ${localPoint.z.toFixed(2)}]`;
+
+            console.log("📍 NOUVEAU HOTSPOT :", coordStr);
+
+            // Copie automatiquement dans le presse-papier
+            navigator.clipboard.writeText(coordStr).then(() => {
+                alert(`Coordonnées copiées dans le presse-papier :\n${coordStr}`);
+            }).catch(() => {
+                alert(`Coordonnées (regardez aussi dans la console) :\n${coordStr}`);
+            });
+        }
+    };
+
     useFrame(() => {
         if (groupRef.current) {
             groupRef.current.rotation.y += 0.0008
@@ -41,6 +59,7 @@ function ISSModel({ onLoaded, onHotspotClick }) {
                 <Center top>
                     <primitive
                         object={scene}
+                        onDoubleClick={handleDoubleClick}
                     />
                 </Center>
             </group>
