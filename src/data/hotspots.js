@@ -19,7 +19,7 @@ Au moment crucial, la voix de l'astronaute française descendra à travers l'atm
             { label: 'Signal', value: 'Faible', unit: '(-140 dBm)' },
             { label: 'Durée contact', value: '10', unit: 'min' },
         ],
-        position: [3.55, 2.89, -2.24],
+        position: [0.02, 2.89, -4.04],
     },
     {
         id: 'panneausolaire',
@@ -59,7 +59,7 @@ C'est également depuis cette pièce avec vue plongeante qu'ils coordonnent l'am
         stats: [
             { label: 'Fenêtres', value: '7', unit: '' },
         ],
-        position: [-0.80, 2.48, -2.37],
+        position: [-0.83, 2.59, -0.44],
     },
     {
         id: 'brasrobotique',
@@ -80,7 +80,7 @@ Il est crucial pour réceptionner les vaisseaux spatiaux venus de la Terre et se
             { label: 'Longueur', value: '17.6', unit: 'm' },
             { label: 'Force', value: '116', unit: 'Tonnes' },
         ],
-        position: [1.89, 2.12, -0.81],
+        position: [-0.42, 1.98, 2.18],
     },
     {
         id: 'radiateur',
@@ -101,7 +101,7 @@ Ces immenses panneaux en aluminium font circuler de l'ammoniac froid pour évacu
             { label: 'Dissipation', value: '70', unit: 'kW' },
             { label: 'Climatisation', value: '22', unit: '°C' },
         ],
-        position: [0.79, 3.21, 2.73],
+        position: [3.93, 1.09, 0.28],
     },
     {
         id: 'columbus',
@@ -121,7 +121,7 @@ Lors de sa mission spatiale au-dessus de vos têtes, c'est très probablement da
         stats: [
             { label: 'Volume', value: '75', unit: 'm³' },
         ],
-        position: [-0.62, 2.59, -1.90],
+        position: [-0.84, 2.57, 1.87],
     },
     {
         id: 'kibo',
@@ -141,7 +141,7 @@ Grâce à un sas, Kibo peut transférer des mini-robots à l'extérieur. Un peti
         stats: [
             { label: 'Armoires', value: '23', unit: 'Racks' },
         ],
-        position: [-2.08, 2.56, -0.25],
+        position: [1.01, 2.34, 1.83],
     },
     {
         id: 'habitation',

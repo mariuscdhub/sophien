@@ -13,21 +13,41 @@ export default function BottomNav({ onTimeline, onInfo, ready }) {
             animate={{ opacity: ready ? 1 : 0, y: ready ? 0 : 40 }}
             transition={{ duration: 0.6, delay: 1.2 }}
         >
-            <div className="flex justify-center pb-6 px-6 pointer-events-auto">
-                <div
-                    className="flex items-center gap-3 px-5 py-3 rounded-2xl"
+            <div className="flex justify-center pb-8 px-6 pointer-events-auto">
+                <motion.div
+                    className="flex md:gap-6 gap-3 px-6 py-4 rounded-3xl relative"
                     style={{
-                        background: 'rgba(5,11,20,0.88)',
-                        backdropFilter: 'blur(16px)',
-                        border: '1px solid rgba(0,240,255,0.12)',
-                        boxShadow: '0 -4px 30px rgba(0,240,255,0.08)',
+                        background: 'linear-gradient(135deg, rgba(8, 20, 35, 0.9) 0%, rgba(5, 11, 20, 0.95) 100%)',
+                        backdropFilter: 'blur(20px)',
+                        border: '1px solid rgba(0,240,255,0.4)',
+                        boxShadow: '0 0 35px rgba(0,240,255,0.2)',
+                    }}
+                    animate={{
+                        boxShadow: [
+                            '0 0 30px rgba(0,240,255,0.2)',
+                            '0 0 50px rgba(0,240,255,0.4)',
+                            '0 0 30px rgba(0,240,255,0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(0,240,255,0.3)',
+                            'rgba(0,240,255,0.6)',
+                            'rgba(0,240,255,0.3)'
+                        ]
+                    }}
+                    transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
                     }}
                 >
+                    {/* Glowing background behind navigation */}
+                    <div className="absolute inset-0 bg-primary/5 rounded-3xl pointer-events-none" style={{ mixBlendMode: 'overlay' }} />
+
                     {/* Timeline button */}
                     <NavButton
                         onClick={onTimeline}
                         icon={
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <svg width="24" height="24" viewBox="0 0 18 18" fill="none" className="drop-shadow-lg">
                                 <path d="M3 3L3 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                                 <circle cx="3" cy="4.5" r="1.5" fill="currentColor" />
                                 <circle cx="3" cy="9" r="1.5" fill="currentColor" />
@@ -39,21 +59,21 @@ export default function BottomNav({ onTimeline, onInfo, ready }) {
                     />
 
                     {/* Divider */}
-                    <div className="w-px h-8" style={{ background: 'rgba(0,240,255,0.12)' }} />
+                    <div className="w-px h-12 self-center mx-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,240,255,0.5), transparent)' }} />
 
                     {/* Info button */}
                     <NavButton
                         onClick={onInfo}
                         icon={
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <svg width="24" height="24" viewBox="0 0 18 18" fill="none" className="drop-shadow-lg">
                                 <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="1.5" />
                                 <path d="M9 8V13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
                                 <circle cx="9" cy="5.5" r="1" fill="currentColor" />
                             </svg>
                         }
-                        label="À propos"
+                        label="Informations"
                     />
-                </div>
+                </motion.div>
             </div>
         </motion.div>
     )
@@ -63,12 +83,17 @@ function NavButton({ onClick, icon, label }) {
     return (
         <motion.button
             onClick={onClick}
-            className="flex flex-col items-center gap-1 px-4 py-1.5 rounded-xl text-white/40 transition-colors hover:text-primary"
-            style={{ minWidth: 64 }}
-            whileTap={{ scale: 0.92 }}
+            className="group flex flex-col items-center gap-2 px-6 py-2 rounded-2xl text-white/80 transition-all hover:text-primary hover:bg-primary/10 relative overflow-hidden"
+            style={{ minWidth: 90 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
         >
-            {icon}
-            <span className="font-tech text-[9px] tracking-wider uppercase">{label}</span>
+            <div className="relative z-10 transition-transform group-hover:-translate-y-1">
+                {icon}
+            </div>
+            <span className="font-tech text-[11px] font-bold tracking-[0.2em] uppercase text-shadow-glow">
+                {label}
+            </span>
         </motion.button>
     )
 }
