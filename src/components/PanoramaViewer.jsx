@@ -1,35 +1,33 @@
-import { useEffect, useRef } from 'react';
+import { Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, useTexture, Sphere } from '@react-three/drei';
+import * as THREE from 'three';
+
+function PanoramaScene() {
+    // We use the newly loaded image that was requested
+    const texture = useTexture('/cupola.jpg');
+
+    return (
+        <>
+            <OrbitControls
+                enableZoom={false}
+                enablePan={false}
+                rotateSpeed={-0.5} // Inverted rotation for inside sphere feel
+                autoRotate
+                autoRotateSpeed={0.5}
+            />
+            <Sphere args={[500, 60, 40]}>
+                <meshBasicMaterial
+                    map={texture}
+                    side={THREE.BackSide}
+                />
+            </Sphere>
+        </>
+    );
+}
 
 export default function PanoramaViewer({ visible, onClose }) {
-    const containerRef = useRef(null);
-
-    useEffect(() => {
-        let viewer = null;
-        if (visible && window.pannellum) {
-            // Need a tiny delay for the AnimatePresence to mount the div into DOM completely
-            const timer = setTimeout(() => {
-                if (containerRef.current) {
-                    viewer = window.pannellum.viewer(containerRef.current, {
-                        "type": "equirectangular",
-                        "panorama": "/cupola-view.jpg",
-                        "autoLoad": true,
-                        "compass": true,
-                        "hfov": 110,
-                        "autoRotate": -1,
-                    });
-                }
-            }, 100);
-
-            return () => {
-                clearTimeout(timer);
-                if (viewer && typeof viewer.destroy === 'function') {
-                    viewer.destroy();
-                }
-            };
-        }
-    }, [visible]);
-
     return (
         <AnimatePresence>
             {visible && (
@@ -40,7 +38,13 @@ export default function PanoramaViewer({ visible, onClose }) {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.6, ease: "easeInOut" }}
                 >
-                    <div ref={containerRef} className="w-full h-full" />
+                    <div className="w-full h-full cursor-grab active:cursor-grabbing">
+                        <Canvas camera={{ position: [0, 0, 0.1], fov: 90 }}>
+                            <Suspense fallback={null}>
+                                <PanoramaScene />
+                            </Suspense>
+                        </Canvas>
+                    </div>
 
                     <button
                         onClick={onClose}
@@ -72,6 +76,10 @@ export default function PanoramaViewer({ visible, onClose }) {
                         <div className="text-white text-xl mt-1 tracking-widest font-bold uppercase font-display drop-shadow-md">
                             Vue Intérieure 360°
                         </div>
+                    </div>
+
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-none text-white/50 text-[10px] tracking-widest font-tech uppercase">
+                        Glissez pour explorer
                     </div>
                 </motion.div>
             )}
