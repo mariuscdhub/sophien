@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import ISSPassTracker from './ISSPassTracker'
 
 export default function HUD({ ready, onOpenPanorama }) {
     return (
@@ -23,16 +24,19 @@ export default function HUD({ ready, onOpenPanorama }) {
                     </span>
                 </div>
 
-                {/* Live badge */}
-                <div className="glass flex items-center gap-2 px-3 py-1.5 rounded-full pointer-events-none">
-                    <motion.span
-                        className="w-2 h-2 rounded-full bg-primary"
-                        animate={{ opacity: [1, 0.3, 1] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                    />
-                    <span className="font-tech text-primary text-[10px] tracking-[0.2em] font-semibold uppercase">
-                        ISS Live
-                    </span>
+                {/* Live badge & Tracker */}
+                <div className="flex flex-col items-end gap-3 pointer-events-none">
+                    <div className="glass flex items-center gap-2 px-3 py-1.5 rounded-full">
+                        <motion.span
+                            className="w-2 h-2 rounded-full bg-primary"
+                            animate={{ opacity: [1, 0.3, 1] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                        />
+                        <span className="font-tech text-primary text-[10px] tracking-[0.2em] font-semibold uppercase">
+                            ISS Live
+                        </span>
+                    </div>
+                    <ISSPassTracker />
                 </div>
             </div>
 
