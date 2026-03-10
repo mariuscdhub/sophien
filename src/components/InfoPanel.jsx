@@ -1,26 +1,27 @@
 import { motion, AnimatePresence } from 'framer-motion'
+import { Globe2, UserCheck, Briefcase, Mic } from 'lucide-react'
 
 const INFO_CONTENT = {
     title: 'Mission:SOPHIE',
     subtitle: 'Station Orbitale pour la Promotion des communications Hyperfréquences',
     sections: [
         {
-            icon: '🌍',
+            icon: <Globe2 className="w-5 h-5 text-[#00FFFF]" />,
             heading: 'Le Projet Régional',
             text: "Porté par l'IUT de Bordeaux (département GEII) et sélectionné par le programme international ARISS, ce projet scientifique et pédagogique exceptionnel mobilise plus de 1 500 élèves dans 50 établissements de toute la Nouvelle-Aquitaine, du primaire au lycée.",
         },
         {
-            icon: '👨‍🎓',
+            icon: <UserCheck className="w-5 h-5 text-[#00FFFF]" />,
             heading: 'Le Rôle des Étudiants GEII',
             text: "Les étudiants de l'IUT sont au cœur du projet : ils conçoivent de A à Z la station radio (VHF/UHF, antennes directionnelles, poursuite orbitale automatique), tout en animant les ateliers d'ingénierie dans les classes participantes.",
         },
         {
-            icon: '🧰',
+            icon: <Briefcase className="w-5 h-5 text-[#00FFFF]" />,
             heading: 'Le Défi Pédagogique',
             text: "Grâce aux mallettes fournies par l'IUT, les élèves expérimentent : création de télégraphes en primaire, conception d'antennes radio au collège/lycée. Les objectifs ? Promouvoir les sciences, l'inclusivité, et encourager les jeunes filles vers les carrières techniques.",
         },
         {
-            icon: '🎙️',
+            icon: <Mic className="w-5 h-5 text-[#00FFFF]" />,
             heading: 'Avril 2026 : Le Contact ISS',
             text: "L'apothéose du projet aura lieu entre le 20 et le 24 avril 2026 : un contact radio en direct exclusif entre les élèves et l'astronaute française Sophie Adenot, à bord de l'ISS. Le Grand Prix de la communication spatiale clôturera le projet le 28 avril.",
         },

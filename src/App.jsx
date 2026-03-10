@@ -9,6 +9,7 @@ import IntroScreen from './components/IntroScreen'
 import TimelinePanel from './components/TimelinePanel'
 import InfoPanel from './components/InfoPanel'
 import BottomNav from './components/BottomNav'
+import PanoramaViewer from './components/PanoramaViewer'
 
 export default function App() {
     // === App flow states ===
@@ -16,6 +17,7 @@ export default function App() {
     const [activeHotspot, setActiveHotspot] = useState(null)
     const [showTimeline, setShowTimeline] = useState(false)
     const [showInfo, setShowInfo] = useState(false)
+    const [showPanorama, setShowPanorama] = useState(false)
 
     const handleEnterScene = useCallback(() => {
         setPhase('loading')
@@ -71,7 +73,7 @@ export default function App() {
 
             {/* === SCENE UI (only when ready) === */}
             {/* HUD */}
-            <HUD ready={phase === 'ready'} />
+            <HUD ready={phase === 'ready'} onOpenPanorama={() => setShowPanorama(true)} />
 
             {/* Bottom nav */}
             <BottomNav
@@ -94,6 +96,12 @@ export default function App() {
             <InfoPanel
                 visible={showInfo}
                 onClose={() => setShowInfo(false)}
+            />
+
+            {/* 360 Panorama Viewer */}
+            <PanoramaViewer
+                visible={showPanorama}
+                onClose={() => setShowPanorama(false)}
             />
         </div>
     )

@@ -1,47 +1,48 @@
 import { motion } from 'framer-motion'
+import { Rocket, User, FlaskConical, Wrench, Cog, Flame } from 'lucide-react'
 
 const timeline = [
     {
         year: '1998',
         label: 'Première Brique',
         desc: "Lancement du module russe Zarya, suivi du module américain Unity. C'est la naissance physique de la station spatiale.",
-        icon: '🚀',
+        icon: <Rocket className="w-4 h-4 text-[#00FFFF]" />,
     },
     {
         year: '2000',
         label: "L'Occupation Humaine",
         desc: "L'Expédition 1 entre dans la station. Depuis ce jour, l'ISS n'a littéralement jamais été vide.",
-        icon: '👨‍🚀',
+        icon: <User className="w-4 h-4 text-[#00FFFF]" />,
     },
     {
         year: '2001-21',
         label: 'Visages Français 🇫🇷',
         desc: "Claudie Haigneré (1ère Européenne, 2001), Philippe Perrin (2002), Léopold Eyharts (2008), et Thomas Pesquet (Commandant, 2016/2021) marquent l'histoire de la station.",
-        icon: '🧑‍🔬',
+        icon: <FlaskConical className="w-4 h-4 text-[#00FFFF]" />,
     },
     {
         year: '2011',
         label: 'Configuration Finale',
         desc: "Fin de la construction principale avec l'ajout essentiel des laboratoires européen (Columbus) et japonais (Kibo).",
-        icon: '🏗️',
+        icon: <Wrench className="w-4 h-4 text-[#00FFFF]" />,
     },
     {
         year: '2021',
         label: 'Retrofitting & IA',
         desc: "Remplacement par des panneaux solaires iROSA, routeurs ARISS haut-débit, ajout du module Nauka, et expérimentations d'Intelligence Artificielle.",
-        icon: '🔧',
+        icon: <Cog className="w-4 h-4 text-[#00FFFF]" />,
     },
     {
         year: '2026',
         label: 'Sophie Adenot 👩‍🚀',
         desc: "Sophie Adenot rejoint l'ISS, devenant la deuxième femme française à aller dans l'espace, 25 ans après Claudie Haigneré.",
-        icon: '👩‍🚀',
+        icon: <User className="w-4 h-4 text-[#00FFFF]" />,
     },
     {
         year: '2030',
         label: 'Le Grand Final',
         desc: "Fatigue structurelle obligera sa fin. Elle sera désorbitée pour s'écraser au Point Nemo, le lieu de l'océan Pacifique le plus éloigné de toute terre.",
-        icon: '☄️',
+        icon: <Flame className="w-4 h-4 text-[#ffbf00]" />,
     },
 ]
 
