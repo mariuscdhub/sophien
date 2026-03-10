@@ -92,15 +92,16 @@ export default function App() {
                 ready={phase === 'ready'}
                 badgeReady={badgeReady}
                 onOpenBadge={() => setShowBadgeModal(true)}
-                onOpenMRT={() => setShowMRT(true)}
             />
 
             {/* Bottom nav */}
             <BottomNav
                 ready={phase === 'ready'}
+                badgeReady={badgeReady}
                 onTimeline={() => setShowTimeline(true)}
                 onInfo={() => setShowInfo(true)}
                 onOpenPanorama={() => setShowPanorama(true)}
+                onOpenMRT={() => setShowMRT(true)}
             />
 
             {/* === MODALS === */}

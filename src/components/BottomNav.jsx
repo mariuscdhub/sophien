@@ -92,32 +92,19 @@ export default function BottomNav({ onTimeline, onInfo, onOpenPanorama, onOpenMR
                     {/* Divider */}
                     <div className="w-px h-12 self-center mx-1 sm:mx-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,240,255,0.5), transparent)' }} />
 
-                    {/* MRT Test button (only if badge not ready) */}
-                    {!badgeReady ? (
-                        <NavButton
-                            onClick={onOpenMRT}
-                            className="bg-[#ffbf00]/20 border border-[#ffbf00] hover:bg-[#ffbf00]/40 drop-shadow-[0_0_15px_rgba(255,191,0,0.5)]"
-                            labelClassName="text-[#ffbf00] group-hover:text-amber-300"
-                            icon={
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="drop-shadow-lg text-[#ffbf00]" stroke="currentColor" strokeWidth="1.5">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                                    <path d="m9 12 2 2 4-4" />
-                                </svg>
-                            }
-                            label="Test"
-                        />
-                    ) : (
-                        <NavButton
-                            className="opacity-50 cursor-not-allowed"
-                            icon={
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="drop-shadow-lg text-emerald-500" stroke="currentColor" strokeWidth="1.5">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                                    <path d="m9 12 2 2 4-4" />
-                                </svg>
-                            }
-                            label="Passé"
-                        />
-                    )}
+                    {/* MRT Test button (always active) */}
+                    <NavButton
+                        onClick={onOpenMRT}
+                        className="bg-[#ffbf00]/20 border border-[#ffbf00] hover:bg-[#ffbf00]/40 drop-shadow-[0_0_15px_rgba(255,191,0,0.5)]"
+                        labelClassName="text-[#ffbf00] group-hover:text-amber-300"
+                        icon={
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="drop-shadow-lg text-[#ffbf00]" stroke="currentColor" strokeWidth="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                <path d="m9 12 2 2 4-4" />
+                            </svg>
+                        }
+                        label="Test"
+                    />
                 </motion.div>
             </div>
         </motion.div>
