@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default function MissionBadge({ name = "ASTRONAUTE", className = "w-40 sm:w-56 h-40 sm:h-56" }) {
+export default function MissionBadge({ name = "ASTRONAUTE", grade = "", className = "w-40 sm:w-56 h-40 sm:h-56" }) {
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -93,8 +93,16 @@ export default function MissionBadge({ name = "ASTRONAUTE", className = "w-40 sm
             // Dynamically adjust span based on name length to avoid overlapping
             const spanLength = Math.min(100, Math.max(40, safeName.length * 8));
             drawCurvedText(safeName, radius * 1.02, false, "#00FFFF", spanLength);
+
+            // Draw User Grade
+            if (grade) {
+                const safeGrade = grade.toUpperCase();
+                ctx.font = `bold ${fontSize * 0.7}px "JetBrains Mono", monospace`;
+                const gradeSpanLength = Math.min(90, Math.max(30, safeGrade.length * 6));
+                drawCurvedText(safeGrade, radius * 0.85, false, "#FFFFFF", gradeSpanLength);
+            }
         };
-    }, [name]);
+    }, [name, grade]);
 
     return (
         <canvas

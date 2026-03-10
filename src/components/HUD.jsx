@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ShieldAlert } from 'lucide-react'
 import ISSPassTracker from './ISSPassTracker'
 
-export default function HUD({ ready, badgeReady, onOpenBadge }) {
+export default function HUD({ ready, badgeReady, onOpenBadge, onOpenMRT }) {
     return (
         <motion.div
             className="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between"
@@ -72,6 +72,30 @@ export default function HUD({ ready, badgeReady, onOpenBadge }) {
                     </div>
                     <ISSPassTracker />
                 </div>
+            </div>
+
+            {/* Test CTA */}
+            <div className="mt-auto pointer-events-none flex justify-center pb-[130px] sm:pb-[140px]">
+                <AnimatePresence>
+                    {!badgeReady && (
+                        <motion.button
+                            onClick={onOpenMRT}
+                            className="pointer-events-auto group relative overflow-hidden px-6 py-3 bg-black/40 backdrop-blur-md rounded-2xl flex items-center gap-3 transition-all duration-300 border border-[#ffbf00]/50 shadow-[0_0_20px_rgba(255,191,0,0.15)] hover:border-[#ffbf00] hover:shadow-[0_0_30px_rgba(255,191,0,0.4)]"
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <span className="relative flex h-3 w-3 shrink-0">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffbf00] opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#ffbf00]"></span>
+                            </span>
+                            <span className="font-tech font-bold text-[#ffbf00] text-xs sm:text-sm tracking-widest uppercase text-shadow-glow">
+                                Test de Qualification
+                            </span>
+                        </motion.button>
+                    )}
+                </AnimatePresence>
             </div>
 
         </motion.div>

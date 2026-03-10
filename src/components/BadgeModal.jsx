@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Download, X } from 'lucide-react'
 import MissionBadge from './MissionBadge'
 
-export default function BadgeModal({ visible, crewName, onClose }) {
+export default function BadgeModal({ visible, crewName, grade, onClose }) {
     const executeDownload = () => {
         const canvas = document.getElementById('mission-badge-canvas')
         if (!canvas) return
@@ -60,12 +60,12 @@ export default function BadgeModal({ visible, crewName, onClose }) {
                             Badge Autorisé
                         </h2>
                         <p className="font-tech text-primary/70 text-xs tracking-[0.2em] uppercase mb-8 text-center max-w-[250px]">
-                            Votre accréditation est prête à être archivée.
+                            {grade ? `Grade : ${grade}. ` : ''}Votre accréditation est prête à être archivée.
                         </p>
 
                         {/* Mission Badge */}
                         <div className="mb-8 w-48 h-48 pointer-events-none drop-shadow-[0_0_30px_rgba(0,240,255,0.4)]">
-                            <MissionBadge name={crewName} className="w-full h-full" />
+                            <MissionBadge name={crewName} grade={grade} className="w-full h-full" />
                         </div>
 
                         {/* Download Button */}

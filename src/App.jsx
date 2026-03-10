@@ -11,17 +11,20 @@ import InfoPanel from './components/InfoPanel'
 import BottomNav from './components/BottomNav'
 import PanoramaViewer from './components/PanoramaViewer'
 import BadgeModal from './components/BadgeModal'
+import MissionReadinessTest from './components/MissionReadinessTest'
 
 export default function App() {
     // === App flow states ===
     const [phase, setPhase] = useState('intro')   // 'intro' | 'loading' | 'ready'
     const [crewName, setCrewName] = useState('')
+    const [grade, setGrade] = useState('')
     const [activeHotspot, setActiveHotspot] = useState(null)
     const [showTimeline, setShowTimeline] = useState(false)
     const [showInfo, setShowInfo] = useState(false)
     const [showPanorama, setShowPanorama] = useState(false)
     const [badgeReady, setBadgeReady] = useState(false)
     const [showBadgeModal, setShowBadgeModal] = useState(false)
+    const [showMRT, setShowMRT] = useState(false)
 
     const handleEnterScene = useCallback((name) => {
         setCrewName(name)
@@ -29,14 +32,14 @@ export default function App() {
     }, [])
 
     const handleModelLoaded = useCallback(() => {
-        setTimeout(() => {
-            setPhase('ready')
-            // Start badge ready timer 1m30s (90000ms)
-            setTimeout(() => {
-                setBadgeReady(true)
-                setShowBadgeModal(true)
-            }, 90000)
-        }, 800)
+        setTimeout(() => setPhase('ready'), 800)
+    }, [])
+
+    const handleMRTComplete = useCallback((achievedGrade) => {
+        setGrade(achievedGrade)
+        setShowMRT(false)
+        setBadgeReady(true)
+        setShowBadgeModal(true)
     }, [])
 
     const handleHotspotClick = useCallback((hotspot) => {
@@ -89,6 +92,7 @@ export default function App() {
                 ready={phase === 'ready'}
                 badgeReady={badgeReady}
                 onOpenBadge={() => setShowBadgeModal(true)}
+                onOpenMRT={() => setShowMRT(true)}
             />
 
             {/* Bottom nav */}
@@ -125,8 +129,17 @@ export default function App() {
             <BadgeModal
                 visible={showBadgeModal}
                 crewName={crewName}
+                grade={grade}
                 onClose={() => setShowBadgeModal(false)}
             />
+
+            {/* Mission Readiness Test */}
+            {showMRT && (
+                <MissionReadinessTest
+                    onClose={() => setShowMRT(false)}
+                    onComplete={handleMRTComplete}
+                />
+            )}
         </div>
     )
 }
