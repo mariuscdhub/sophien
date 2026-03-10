@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
  * - Timeline (ISS history)
  * - Info / About
  */
-export default function BottomNav({ onTimeline, onInfo, ready }) {
+export default function BottomNav({ onTimeline, onInfo, onOpenPanorama, ready }) {
     return (
         <motion.div
             className="fixed bottom-0 left-0 right-0 z-20 pointer-events-none"
@@ -15,7 +15,7 @@ export default function BottomNav({ onTimeline, onInfo, ready }) {
         >
             <div className="flex justify-center pb-8 px-6 pointer-events-auto">
                 <motion.div
-                    className="flex md:gap-6 gap-3 px-6 py-4 rounded-3xl relative"
+                    className="flex md:gap-6 gap-1 sm:gap-3 px-2 sm:px-6 py-3 sm:py-4 rounded-3xl relative"
                     style={{
                         background: 'linear-gradient(135deg, rgba(8, 20, 35, 0.9) 0%, rgba(5, 11, 20, 0.95) 100%)',
                         backdropFilter: 'blur(20px)',
@@ -73,6 +73,21 @@ export default function BottomNav({ onTimeline, onInfo, ready }) {
                         }
                         label="Informations"
                     />
+
+                    {/* Divider */}
+                    <div className="w-px h-12 self-center mx-1 sm:mx-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,240,255,0.5), transparent)' }} />
+
+                    {/* Panorama button */}
+                    <NavButton
+                        onClick={onOpenPanorama}
+                        icon={
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="drop-shadow-lg" stroke="currentColor" strokeWidth="1.5">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        }
+                        label="Vue 360"
+                    />
                 </motion.div>
             </div>
         </motion.div>
@@ -83,15 +98,15 @@ function NavButton({ onClick, icon, label }) {
     return (
         <motion.button
             onClick={onClick}
-            className="group flex flex-col items-center gap-2 px-6 py-2 rounded-2xl text-white/80 transition-all hover:text-primary hover:bg-primary/10 relative overflow-hidden"
-            style={{ minWidth: 90 }}
+            className="group flex flex-col items-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 rounded-2xl text-white/80 transition-all hover:text-primary hover:bg-primary/10 relative overflow-hidden"
+            style={{ minWidth: 70 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
         >
             <div className="relative z-10 transition-transform group-hover:-translate-y-1">
                 {icon}
             </div>
-            <span className="font-tech text-[11px] font-bold tracking-[0.2em] uppercase text-shadow-glow">
+            <span className="font-tech text-[9px] sm:text-[11px] font-bold tracking-[0.1em] sm:tracking-[0.2em] uppercase text-shadow-glow">
                 {label}
             </span>
         </motion.button>

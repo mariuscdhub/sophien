@@ -73,13 +73,14 @@ export default function App() {
 
             {/* === SCENE UI (only when ready) === */}
             {/* HUD */}
-            <HUD ready={phase === 'ready'} onOpenPanorama={() => setShowPanorama(true)} />
+            <HUD ready={phase === 'ready'} />
 
             {/* Bottom nav */}
             <BottomNav
                 ready={phase === 'ready'}
                 onTimeline={() => setShowTimeline(true)}
                 onInfo={() => setShowInfo(true)}
+                onOpenPanorama={() => setShowPanorama(true)}
             />
 
             {/* === MODALS === */}
