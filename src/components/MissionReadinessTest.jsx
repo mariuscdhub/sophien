@@ -12,7 +12,12 @@ const QUESTIONS = [
     { text: "Le son des outils résonne fort à l'extérieur de la station lors des sorties spatiales.", answer: false, fact: "Le vide spatial empeche le son de se propager. Le silence y est absolu." },
     { text: "L'orbite artificielle de l'ISS se situe à plus de 10 000 km d'altitude.", answer: false, fact: "Faux, elle orbite en orbite basse, à seulement ~400 km d'altitude moyenne." },
     { text: "La coupole (Cupola) sert principalement à observer la Terre.", answer: true, fact: "Ses sept fenêtres offrent une vue à 360° imprenable sur notre planète bleue." },
-    { text: "L'oxygène de l'air est produit en 'cassant' l'eau récupérée à bord.", answer: true, fact: "C'est l'électrolyse de l'eau qui sépare l'hydrogène et l'oxygène pour que l'équipage puisse respirer." }
+    { text: "L'oxygène de l'air est produit en 'cassant' l'eau récupérée à bord.", answer: true, fact: "C'est l'électrolyse de l'eau qui sépare l'hydrogène et l'oxygène pour que l'équipage puisse respirer." },
+    { text: "Le Soleil se lève une seule fois par tranche de 24 heures pour les astronautes.", answer: false, fact: "À cette vitesse, l'ISS fait le tour de la Terre en 90 minutes. Ils voient 16 levers et couchers de Soleil par jour !" },
+    { text: "Si un astronaute pleure, ses larmes ne tombent pas.", answer: true, fact: "Sans gravité pour les tirer vers le bas, les larmes forment plutôt des bulles d'eau qui restent collées aux yeux." },
+    { text: "L'ISS est le plus grand objet artificiel jamais envoyé dans l'espace.", answer: true, fact: "Elle a approximativement la taille d'un grand terrain de football, incluant les panneaux solaires." },
+    { text: "La température à l'extérieur de l'ISS est constante et régulée.", answer: false, fact: "Faux ! Elle varie de -150°C dans l'ombre de la Terre jusqu'à +120°C en plein soleil." },
+    { text: "Toutes les horloges de l'ISS sont réglées sur l'heure du Texas.", answer: false, fact: "L'ISS utilise le temps universel coordonné (UTC) pour se synchroniser avec toutes les agences internationales (Houston, Moscou, Europe, etc.)." }
 ];
 
 export default function MissionReadinessTest({ onClose, onComplete }) {
@@ -52,9 +57,9 @@ export default function MissionReadinessTest({ onClose, onComplete }) {
     };
 
     const handleFinish = () => {
-        let grade = "SPÉCIALISTE"; // < 8
-        if (score === 10) grade = "COMMANDANT";
-        else if (score >= 8) grade = "PILOTE";
+        let grade = "SPÉCIALISTE"; // < 12
+        if (score === 15) grade = "COMMANDANT";
+        else if (score >= 12) grade = "PILOTE";
 
         onComplete(grade, score);
     };
@@ -154,7 +159,7 @@ export default function MissionReadinessTest({ onClose, onComplete }) {
                                     Test de Qualification
                                 </h1>
                                 <p className="font-display text-white/60 text-sm leading-relaxed mb-8">
-                                    Seuls les meilleurs éléments peuvent prétendre au grade de Commandant. Prouvez vos connaissances sur l'ISS et le Projet SOPHIE en 10 questions. 3 erreurs et la mission s'arrête.
+                                    Seuls les meilleurs éléments peuvent prétendre au grade de Commandant. Prouvez vos connaissances sur l'ISS et le Projet SOPHIE en 15 questions. 3 erreurs et la mission s'arrête.
                                 </p>
                                 <button
                                     onClick={() => setStatus('playing')}
@@ -241,10 +246,10 @@ export default function MissionReadinessTest({ onClose, onComplete }) {
 
                                 <p className="font-tech text-[#00FFFF]/70 text-[10px] tracking-[0.3em] uppercase mb-2">Résultat Officiel</p>
                                 <h1 className="font-display text-white text-3xl font-bold uppercase tracking-widest mb-4 text-[#00FFFF]" style={{ textShadow: '0 0 20px rgba(0,240,255,0.5)' }}>
-                                    {score === 10 ? "Commandant" : (score >= 8 ? "Pilote" : "Spécialiste")}
+                                    {score === 15 ? "Commandant" : (score >= 12 ? "Pilote" : "Spécialiste")}
                                 </h1>
                                 <p className="font-display text-white/80 text-sm leading-relaxed mb-8">
-                                    Félicitations, vous avez obtenu la note de {score}/10 au test de préparation. Votre accréditation avec votre nouveau grade a été débloquée.
+                                    Félicitations, vous avez obtenu la note de {score}/15 au test de préparation. Votre accréditation avec votre nouveau grade a été débloquée.
                                 </p>
                                 <button
                                     onClick={handleFinish}
