@@ -145,24 +145,30 @@ export default function IntroScreen({ onEnter }) {
                     {/* CTA button */}
                     <motion.button
                         onClick={onEnter}
-                        className="relative overflow-hidden px-10 py-4 rounded-2xl font-display font-bold text-space-bg text-base tracking-widest uppercase"
+                        className="group relative overflow-hidden px-8 py-3 bg-black font-tech font-bold text-[#ffbf00] text-sm uppercase flex items-center gap-3 transition-all duration-300"
                         style={{
-                            background: 'linear-gradient(135deg, #00F0FF, #00B8CC)',
-                            boxShadow: '0 0 30px rgba(0,240,255,0.4), 0 4px 20px rgba(0,0,0,0.3)',
+                            border: '1px solid #ffbf00',
+                            boxShadow: '0 0 15px rgba(255, 191, 0, 0.4), inset 0 0 10px rgba(255, 191, 0, 0.2)',
+                            clipPath: 'polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px)',
                         }}
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.8, duration: 0.5 }}
-                        whileHover={{ scale: 1.04, boxShadow: '0 0 50px rgba(0,240,255,0.6)' }}
+                        whileHover={{ boxShadow: '0 0 25px rgba(255, 191, 0, 0.8), inset 0 0 15px rgba(255, 191, 0, 0.4)' }}
                         whileTap={{ scale: 0.97 }}
                     >
-                        {/* Shine sweep */}
+                        {/* Radar Icon */}
                         <motion.div
-                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                            animate={{ x: ['-200%', '200%'] }}
-                            transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1.5 }}
-                        />
-                        <span className="relative">Explorer l'ISS →</span>
+                            className="w-5 h-5 border border-[#ffbf00] rounded-full relative flex items-center justify-center shrink-0"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 4, ease: 'linear', repeat: Infinity }}
+                        >
+                            <div className="absolute w-1/2 h-px bg-[#ffbf00] right-0 top-1/2 origin-left transform -translate-y-1/2" />
+                            <div className="w-1 h-1 bg-[#ffbf00] rounded-full" />
+                        </motion.div>
+                        <span className="relative tracking-[0.2em] group-hover:tracking-[0.4em] transition-all duration-300">
+                            Explorer la station
+                        </span>
                     </motion.button>
 
                     {/* Skip text */}
