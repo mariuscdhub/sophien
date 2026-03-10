@@ -1,9 +1,27 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import { Download, Rocket, Shield } from 'lucide-react'
 import MissionBadge from './MissionBadge'
 
 export default function IntroScreen({ onEnter }) {
     const [name, setName] = useState('')
+    const [view, setView] = useState('welcome')
+
+    const executeDownload = () => {
+        const canvas = document.getElementById('mission-badge-canvas')
+        if (!canvas) return
+        try {
+            const url = canvas.toDataURL('image/png')
+            const a = document.createElement('a')
+            a.href = url
+            a.download = `Badge_Sophie_${name || 'ASTRONAUTE'}.png`
+            document.body.appendChild(a)
+            a.click()
+            document.body.removeChild(a)
+        } catch (e) {
+            console.error("Erreur téléchargement image", e)
+        }
+    }
 
     return (
         <AnimatePresence>
@@ -17,7 +35,7 @@ export default function IntroScreen({ onEnter }) {
             >
                 {/* Animated grid background */}
                 <motion.div
-                    className="absolute inset-0 opacity-10"
+                    className="absolute inset-0 opacity-10 pointer-events-none"
                     style={{
                         backgroundImage:
                             'linear-gradient(rgba(0,240,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(0,240,255,0.4) 1px, transparent 1px)',
@@ -29,7 +47,7 @@ export default function IntroScreen({ onEnter }) {
 
                 {/* Earth glow behind model */}
                 <div
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none"
                     style={{
                         width: '150%',
                         height: '40%',
@@ -39,7 +57,7 @@ export default function IntroScreen({ onEnter }) {
 
                 {/* Outer orbit ring */}
                 <motion.div
-                    className="absolute rounded-full"
+                    className="absolute rounded-full pointer-events-none"
                     style={{
                         width: 300,
                         height: 300,
@@ -57,7 +75,7 @@ export default function IntroScreen({ onEnter }) {
 
                 {/* Inner orbit ring */}
                 <motion.div
-                    className="absolute rounded-full"
+                    className="absolute rounded-full pointer-events-none"
                     style={{
                         width: 200,
                         height: 200,
@@ -73,77 +91,179 @@ export default function IntroScreen({ onEnter }) {
                 </motion.div>
 
                 {/* Central content */}
-                <div className="relative z-10 flex flex-col items-center text-center px-8 w-full">
-                    {/* Mission Badge */}
-                    <motion.div
-                        className="mb-6"
-                        initial={{ scale: 0.3, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                        <MissionBadge name={name} size={220} />
-                    </motion.div>
+                <div className="relative z-10 flex flex-col items-center text-center px-8 w-full max-w-lg pointer-events-auto">
 
-                    {/* Name Input */}
-                    <motion.div
-                        initial={{ y: 30, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.3, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                        className="mb-2 w-full max-w-xs"
-                    >
-                        <p className="font-tech text-primary text-[10px] tracking-[0.3em] uppercase mb-2" style={{ textShadow: '0 0 12px rgba(0,240,255,0.6)' }}>
-                            Identifiant Équipage
-                        </p>
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value.toUpperCase().slice(0, 15))}
-                            placeholder="VOTRE NOM"
-                            className="w-full bg-black/40 border border-[#00FFFF]/30 rounded-none px-4 py-3 text-center text-white font-tech tracking-widest outline-none focus:border-[#00FFFF] focus:bg-[#00FFFF]/10 transition-all uppercase"
-                            style={{ boxShadow: 'inset 0 0 10px rgba(0,240,255,0.1)' }}
-                        />
-                    </motion.div>
-
-                    {/* Subtitle */}
-                    <motion.p
-                        className="font-display text-white/40 text-sm leading-relaxed mt-4 mb-10 max-w-xs"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.6, duration: 0.6 }}
-                    >
-                        Explorez la Station Spatiale Internationale en 3D.
-                        Découvrez ses modules, ses technologies et ses missions.
-                    </motion.p>
-
-                    {/* CTA button */}
-                    <motion.button
-                        onClick={onEnter}
-                        className="group relative overflow-hidden px-8 py-3 bg-black font-tech font-bold text-[#ffbf00] text-sm uppercase flex items-center gap-3 transition-all duration-300"
-                        style={{
-                            border: '1px solid #ffbf00',
-                            boxShadow: '0 0 15px rgba(255, 191, 0, 0.4), inset 0 0 10px rgba(255, 191, 0, 0.2)',
-                            clipPath: 'polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px)',
-                        }}
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.8, duration: 0.5 }}
-                        whileHover={{ boxShadow: '0 0 25px rgba(255, 191, 0, 0.8), inset 0 0 15px rgba(255, 191, 0, 0.4)' }}
-                        whileTap={{ scale: 0.97 }}
-                    >
-                        {/* Radar Icon */}
+                    {view === 'welcome' && (
                         <motion.div
-                            className="w-5 h-5 border border-[#ffbf00] rounded-full relative flex items-center justify-center shrink-0"
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 4, ease: 'linear', repeat: Infinity }}
+                            key="welcome"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ duration: 0.5 }}
+                            className="flex flex-col items-center"
                         >
-                            <div className="absolute w-1/2 h-px bg-[#ffbf00] right-0 top-1/2 origin-left transform -translate-y-1/2" />
-                            <div className="w-1 h-1 bg-[#ffbf00] rounded-full" />
-                        </motion.div>
-                        <span className="relative tracking-[0.2em] group-hover:tracking-[0.4em] transition-all duration-300">
-                            Explorer la station
-                        </span>
-                    </motion.button>
+                            {/* Logo mark */}
+                            <motion.div
+                                className="mb-8"
+                                initial={{ scale: 0.3, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                            >
+                                <div
+                                    className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+                                    style={{
+                                        background: 'rgba(0,240,255,0.06)',
+                                        border: '1.5px solid rgba(0,240,255,0.4)',
+                                        boxShadow: '0 0 40px rgba(0,240,255,0.2), inset 0 0 20px rgba(0,240,255,0.05)',
+                                    }}
+                                >
+                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                        <circle cx="18" cy="18" r="6" stroke="#00F0FF" strokeWidth="1.5" />
+                                        <path d="M18 3V10M18 26V33M3 18H10M26 18H33" stroke="#00F0FF" strokeWidth="1.5" strokeLinecap="round" />
+                                        <circle cx="18" cy="18" r="13" stroke="#00F0FF" strokeWidth="0.5" strokeDasharray="2 5" />
+                                    </svg>
+                                </div>
+                            </motion.div>
 
+                            {/* Title block */}
+                            <motion.div
+                                initial={{ y: 30, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.2, duration: 0.7 }}
+                            >
+                                <p className="font-tech text-primary text-[10px] tracking-[0.55em] uppercase mb-2" style={{ textShadow: '0 0 12px rgba(0,240,255,0.6)' }}>
+                                    Bienvenue dans
+                                </p>
+                                <h1 className="font-display text-white text-5xl font-bold tracking-widest uppercase mb-1" style={{ textShadow: '0 0 40px rgba(0,240,255,0.4)' }}>
+                                    Mission
+                                </h1>
+                                <h1
+                                    className="font-display font-bold tracking-widest uppercase text-5xl"
+                                    style={{
+                                        background: 'linear-gradient(135deg, #00F0FF 0%, #60EFFF 50%, #00B8CC 100%)',
+                                        WebkitBackgroundClip: 'text',
+                                        WebkitTextFillColor: 'transparent',
+                                        filter: 'drop-shadow(0 0 20px rgba(0,240,255,0.6))',
+                                    }}
+                                >
+                                    Sophie
+                                </h1>
+                            </motion.div>
+
+                            {/* Subtitle */}
+                            <motion.p
+                                className="font-display text-white/40 text-sm leading-relaxed mt-4 mb-10 max-w-xs"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.4 }}
+                            >
+                                Explorez la Station Spatiale Internationale en 3D.
+                                Découvrez ses modules, ses technologies et ses missions.
+                            </motion.p>
+
+                            <div className="flex flex-col gap-4 w-full">
+                                {/* Create Badge Button */}
+                                <motion.button
+                                    onClick={() => setView('badge')}
+                                    className="group relative overflow-hidden px-8 py-3.5 bg-black font-tech font-bold text-[#00FFFF] text-sm uppercase flex items-center justify-center gap-3 transition-all duration-300 w-full"
+                                    style={{
+                                        border: '1px solid #00FFFF',
+                                        boxShadow: '0 0 15px rgba(0, 240, 255, 0.2), inset 0 0 10px rgba(0, 240, 255, 0.1)',
+                                    }}
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.6 }}
+                                    whileHover={{ boxShadow: '0 0 25px rgba(0, 240, 255, 0.6), inset 0 0 15px rgba(0, 240, 255, 0.2)' }}
+                                    whileTap={{ scale: 0.98 }}
+                                >
+                                    <Shield className="w-5 h-5 text-[#00FFFF]" />
+                                    <span className="tracking-[0.2em]">Ouvrir mon badge</span>
+                                </motion.button>
+
+                                {/* Skip CTA button */}
+                                <motion.button
+                                    onClick={onEnter}
+                                    className="group relative overflow-hidden px-8 py-3.5 bg-black font-tech font-bold text-[#ffbf00] text-sm uppercase flex items-center justify-center gap-3 transition-all duration-300 w-full"
+                                    style={{
+                                        border: '1px solid #ffbf00',
+                                        boxShadow: '0 0 15px rgba(255, 191, 0, 0.4), inset 0 0 10px rgba(255, 191, 0, 0.2)',
+                                        clipPath: 'polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px)',
+                                    }}
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.7 }}
+                                    whileHover={{ boxShadow: '0 0 25px rgba(255, 191, 0, 0.8), inset 0 0 15px rgba(255, 191, 0, 0.4)' }}
+                                    whileTap={{ scale: 0.98 }}
+                                >
+                                    <Rocket className="w-5 h-5 text-[#ffbf00]" />
+                                    <span className="tracking-[0.2em] group-hover:tracking-[0.4em] transition-all duration-300">
+                                        Explorer l'ISS secrètement
+                                    </span>
+                                </motion.button>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {view === 'badge' && (
+                        <motion.div
+                            key="badge"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ duration: 0.5 }}
+                            className="flex flex-col items-center w-full"
+                        >
+                            {/* Mission Badge */}
+                            <motion.div
+                                className="mb-6 pointer-events-none"
+                                initial={{ scale: 0.3, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                            >
+                                <MissionBadge name={name} className="w-48 sm:w-64 h-48 sm:h-64 mx-auto drop-shadow-[0_0_30px_rgba(0,240,255,0.4)]" />
+                            </motion.div>
+
+                            {/* Name Input */}
+                            <motion.div
+                                initial={{ y: 30, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.3, duration: 0.7 }}
+                                className="mb-6 w-full"
+                            >
+                                <p className="font-tech text-primary text-[10px] tracking-[0.3em] uppercase mb-2" style={{ textShadow: '0 0 12px rgba(0,240,255,0.6)' }}>
+                                    Entrez votre identifiant
+                                </p>
+                                <input
+                                    type="text"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value.toUpperCase().slice(0, 15))}
+                                    placeholder="VOTRE NOM"
+                                    className="w-full bg-black/40 border border-[#00FFFF]/30 rounded-none px-4 py-3 text-center text-white font-tech tracking-widest outline-none focus:border-[#00FFFF] focus:bg-[#00FFFF]/10 transition-all uppercase"
+                                    style={{ boxShadow: 'inset 0 0 10px rgba(0,240,255,0.1)' }}
+                                />
+                            </motion.div>
+
+                            <div className="flex flex-col gap-3 w-full">
+                                {/* Download Button */}
+                                <button
+                                    onClick={executeDownload}
+                                    className="group w-full py-3.5 bg-black/50 border border-[#00FFFF] font-tech font-bold text-[#00FFFF] text-sm uppercase flex items-center justify-center gap-3 transition-colors hover:bg-[#00FFFF] hover:text-black"
+                                >
+                                    <Download className="w-5 h-5" />
+                                    <span className="tracking-[0.2em]">Archiver le badge</span>
+                                </button>
+
+                                {/* Proceed to ISS */}
+                                <button
+                                    onClick={onEnter}
+                                    className="group w-full py-3.5 bg-transparent border border-[#ffbf00]/50 font-tech font-bold text-[#ffbf00]/80 text-sm uppercase flex items-center justify-center gap-3 transition-colors hover:border-[#ffbf00] hover:text-[#ffbf00]"
+                                >
+                                    <Rocket className="w-5 h-5 shrink-0" />
+                                    <span className="tracking-[0.2em]">Poursuivre la mission</span>
+                                </button>
+                            </div>
+                        </motion.div>
+                    )}
                 </div>
             </motion.div>
         </AnimatePresence>

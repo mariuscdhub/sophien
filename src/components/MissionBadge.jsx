@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default function MissionBadge({ name = "ASTRONAUTE", size = 250 }) {
+export default function MissionBadge({ name = "ASTRONAUTE", className = "w-40 sm:w-56 h-40 sm:h-56" }) {
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -98,9 +98,9 @@ export default function MissionBadge({ name = "ASTRONAUTE", size = 250 }) {
 
     return (
         <canvas
+            id="mission-badge-canvas"
             ref={canvasRef}
-            style={{ width: size, height: size }}
-            className="max-w-full drop-shadow-[0_10px_30px_rgba(0,240,255,0.3)]"
+            className={`max-w-full drop-shadow-[0_10px_30px_rgba(0,240,255,0.3)] ${className}`}
         />
     );
 }
