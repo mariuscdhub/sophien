@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import TelemetryWidget from './TelemetryWidget'
 
 export default function HUD({ ready, onOpenPanorama }) {
     return (
@@ -61,9 +60,6 @@ export default function HUD({ ready, onOpenPanorama }) {
                     VUE COUPOLE 360°
                 </button>
             </div>
-
-            {/* Telemetry Widget side panel */}
-            <TelemetryWidget />
 
         </motion.div>
     )
