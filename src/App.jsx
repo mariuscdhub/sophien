@@ -10,21 +10,33 @@ import TimelinePanel from './components/TimelinePanel'
 import InfoPanel from './components/InfoPanel'
 import BottomNav from './components/BottomNav'
 import PanoramaViewer from './components/PanoramaViewer'
+import BadgeModal from './components/BadgeModal'
 
 export default function App() {
     // === App flow states ===
     const [phase, setPhase] = useState('intro')   // 'intro' | 'loading' | 'ready'
+    const [crewName, setCrewName] = useState('')
     const [activeHotspot, setActiveHotspot] = useState(null)
     const [showTimeline, setShowTimeline] = useState(false)
     const [showInfo, setShowInfo] = useState(false)
     const [showPanorama, setShowPanorama] = useState(false)
+    const [badgeReady, setBadgeReady] = useState(false)
+    const [showBadgeModal, setShowBadgeModal] = useState(false)
 
-    const handleEnterScene = useCallback(() => {
+    const handleEnterScene = useCallback((name) => {
+        setCrewName(name)
         setPhase('loading')
     }, [])
 
     const handleModelLoaded = useCallback(() => {
-        setTimeout(() => setPhase('ready'), 800)
+        setTimeout(() => {
+            setPhase('ready')
+            // Start badge ready timer 1m30s (90000ms)
+            setTimeout(() => {
+                setBadgeReady(true)
+                setShowBadgeModal(true)
+            }, 90000)
+        }, 800)
     }, [])
 
     const handleHotspotClick = useCallback((hotspot) => {
@@ -73,7 +85,11 @@ export default function App() {
 
             {/* === SCENE UI (only when ready) === */}
             {/* HUD */}
-            <HUD ready={phase === 'ready'} />
+            <HUD
+                ready={phase === 'ready'}
+                badgeReady={badgeReady}
+                onOpenBadge={() => setShowBadgeModal(true)}
+            />
 
             {/* Bottom nav */}
             <BottomNav
@@ -103,6 +119,13 @@ export default function App() {
             <PanoramaViewer
                 visible={showPanorama}
                 onClose={() => setShowPanorama(false)}
+            />
+
+            {/* Badge Generation ready modal */}
+            <BadgeModal
+                visible={showBadgeModal}
+                crewName={crewName}
+                onClose={() => setShowBadgeModal(false)}
             />
         </div>
     )
