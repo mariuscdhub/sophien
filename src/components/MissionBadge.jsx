@@ -85,7 +85,7 @@ export default function MissionBadge({ name = "ASTRONAUTE", grade = "", classNam
             };
 
             // Draw Top arc (Mission name) in amber/orange
-            drawCurvedText("MISSION SOPHIE", radius * 1.05, true, "#ffbf00", 60);
+            drawCurvedText("PROJET SOPHIE", radius * 1.05, true, "#ffbf00", 60);
 
             // Draw Bottom arc (User Name) in cyan
             // Use fallback name if empty
