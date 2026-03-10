@@ -1,12 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect } from 'react'
+import { useState } from 'react'
+import MissionBadge from './MissionBadge'
 
 export default function IntroScreen({ onEnter }) {
-    // Auto-advance on long press or after 6s as fallback
-    useEffect(() => {
-        const timer = setTimeout(onEnter, 7000)
-        return () => clearTimeout(timer)
-    }, [onEnter])
+    const [name, setName] = useState('')
 
     return (
         <AnimatePresence>
@@ -76,59 +73,35 @@ export default function IntroScreen({ onEnter }) {
                 </motion.div>
 
                 {/* Central content */}
-                <div className="relative z-10 flex flex-col items-center text-center px-8">
-                    {/* Logo mark */}
+                <div className="relative z-10 flex flex-col items-center text-center px-8 w-full">
+                    {/* Mission Badge */}
                     <motion.div
-                        className="mb-8"
+                        className="mb-6"
                         initial={{ scale: 0.3, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <div
-                            className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-                            style={{
-                                background: 'rgba(0,240,255,0.06)',
-                                border: '1.5px solid rgba(0,240,255,0.4)',
-                                boxShadow: '0 0 40px rgba(0,240,255,0.2), inset 0 0 20px rgba(0,240,255,0.05)',
-                            }}
-                        >
-                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                                <circle cx="18" cy="18" r="6" stroke="#00F0FF" strokeWidth="1.5" />
-                                <path d="M18 3V10M18 26V33M3 18H10M26 18H33" stroke="#00F0FF" strokeWidth="1.5" strokeLinecap="round" />
-                                <circle cx="18" cy="18" r="13" stroke="#00F0FF" strokeWidth="0.5" strokeDasharray="2 5" />
-                            </svg>
-                        </div>
+                        <MissionBadge name={name} size={220} />
                     </motion.div>
 
-                    {/* Title block */}
+                    {/* Name Input */}
                     <motion.div
                         initial={{ y: 30, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                        className="mb-2 w-full max-w-xs"
                     >
-                        <p
-                            className="font-tech text-primary text-[10px] tracking-[0.55em] uppercase mb-2"
-                            style={{ textShadow: '0 0 12px rgba(0,240,255,0.6)' }}
-                        >
-                            Bienvenue dans
+                        <p className="font-tech text-primary text-[10px] tracking-[0.3em] uppercase mb-2" style={{ textShadow: '0 0 12px rgba(0,240,255,0.6)' }}>
+                            Identifiant Équipage
                         </p>
-                        <h1
-                            className="font-display text-white text-5xl font-bold tracking-widest uppercase mb-1"
-                            style={{ textShadow: '0 0 40px rgba(0,240,255,0.4)' }}
-                        >
-                            Mission
-                        </h1>
-                        <h1
-                            className="font-display font-bold tracking-widest uppercase text-5xl"
-                            style={{
-                                background: 'linear-gradient(135deg, #00F0FF 0%, #60EFFF 50%, #00B8CC 100%)',
-                                WebkitBackgroundClip: 'text',
-                                WebkitTextFillColor: 'transparent',
-                                filter: 'drop-shadow(0 0 20px rgba(0,240,255,0.6))',
-                            }}
-                        >
-                            Sophie
-                        </h1>
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value.toUpperCase().slice(0, 15))}
+                            placeholder="VOTRE NOM"
+                            className="w-full bg-black/40 border border-[#00FFFF]/30 rounded-none px-4 py-3 text-center text-white font-tech tracking-widest outline-none focus:border-[#00FFFF] focus:bg-[#00FFFF]/10 transition-all uppercase"
+                            style={{ boxShadow: 'inset 0 0 10px rgba(0,240,255,0.1)' }}
+                        />
                     </motion.div>
 
                     {/* Subtitle */}
@@ -171,15 +144,6 @@ export default function IntroScreen({ onEnter }) {
                         </span>
                     </motion.button>
 
-                    {/* Skip text */}
-                    <motion.p
-                        className="font-tech text-white/20 text-[10px] tracking-wider mt-5 uppercase"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1.2 }}
-                    >
-                        Accès automatique dans 7s
-                    </motion.p>
                 </div>
             </motion.div>
         </AnimatePresence>
