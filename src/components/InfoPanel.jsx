@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Globe2, UserCheck, Briefcase, Mic } from 'lucide-react'
+import { Globe2, UserCheck, Briefcase, Mic, ExternalLink } from 'lucide-react'
 
 const INFO_CONTENT = {
     title: 'Mission:SOPHIE',
@@ -104,6 +104,37 @@ export default function InfoPanel({ visible, onClose }) {
                             </p>
                         </motion.div>
                     ))}
+
+                    {/* Official Site Link */}
+                    <motion.div
+                        className="flex justify-center pt-2 pb-4"
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 15 }}
+                        transition={{ delay: visible ? 0.4 : 0 }}
+                    >
+                        <a
+                            href="https://www.iut.u-bordeaux.fr/projet-mission-sophie/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex items-center justify-center gap-2 w-full py-3.5 bg-[#00FFFF]/5 font-tech font-bold text-[#00FFFF] text-sm uppercase transition-all duration-300 rounded-xl"
+                            style={{
+                                border: '1px solid rgba(0,240,255,0.4)',
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.boxShadow = '0 0 25px rgba(0,240,255,0.4), inset 0 0 15px rgba(0,240,255,0.2)'
+                                e.currentTarget.style.background = 'rgba(0,240,255,0.1)'
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.boxShadow = 'none'
+                                e.currentTarget.style.background = 'rgba(0,240,255,0.05)'
+                            }}
+                        >
+                            <ExternalLink className="w-5 h-5 shrink-0" />
+                            <span className="tracking-[0.1em] group-hover:tracking-[0.2em] transition-all duration-300">
+                                Site web officiel du projet
+                            </span>
+                        </a>
+                    </motion.div>
 
                     {/* Badge */}
                     <div className="flex justify-center pt-2">
