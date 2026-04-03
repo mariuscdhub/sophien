@@ -16,13 +16,6 @@ export default function AuthorPanel({ visible, onClose }) {
             value: 'marius.coudurier@etu.u-bordeaux.fr',
             href: 'mailto:marius.coudurier@etu.u-bordeaux.fr',
             color: '#00FFFF'
-        },
-        {
-            icon: <Phone className="w-5 h-5" />,
-            label: 'Téléphone',
-            value: '06 49 55 98 96',
-            href: 'tel:0649559896',
-            color: '#00FF99'
         }
     ]
 
@@ -94,8 +87,13 @@ export default function AuthorPanel({ visible, onClose }) {
                             <h3 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1 tracking-tight">
                                 Marius <span className="text-[#00FFFF]">Coudurier</span>
                             </h3>
-                            <p className="font-tech text-[#00FFFF]/70 text-[10px] sm:text-xs tracking-widest uppercase mb-3 sm:mb-4">
+                            <p className="font-tech text-[#00FFFF]/70 text-[10px] sm:text-xs tracking-widest uppercase mb-3 sm:mb-4 border-b border-white/10 pb-2">
                                 Élève de 1ère année en GEII
+                            </p>
+
+                            <p className="font-tech text-white/60 text-[10px] sm:text-xs leading-relaxed mb-4 sm:mb-6 max-w-[280px] mx-auto md:mx-0">
+                                Créateur de ce site internet, je suis actuellement en première année de GEII. Ce projet a été réalisé dans le cadre d'un accompagnement pour un projet web. <br />
+                                <span className="text-[#00FFFF]/50 mt-2 block italic text-[9px] sm:text-[11px]">N'hésitez pas à me contacter pour toute collaboration !</span>
                             </p>
                             
                             <div className="flex flex-wrap justify-center md:justify-start gap-3">
