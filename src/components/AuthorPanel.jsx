@@ -43,7 +43,7 @@ export default function AuthorPanel({ visible, onClose }) {
             <motion.div
                 className="relative z-10 w-full max-w-lg bg-[#0A1A2F]/90 border border-[#00FFFF]/30 rounded-[2rem] overflow-hidden shadow-[0_0_50px_rgba(0,255,255,0.1)]"
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: visible ? 1 : 0.9, scale: visible ? 1 : 0.9, y: visible ? 0 : 20 }}
+                animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0.9, y: visible ? 0 : 20 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
                 {/* HUD Scanline Effect */}
