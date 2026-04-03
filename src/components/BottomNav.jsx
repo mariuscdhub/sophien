@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
  * - Timeline (ISS history)
  * - Info / About
  */
-export default function BottomNav({ onTimeline, onInfo, onOpenPanorama, onOpenMRT, ready, badgeReady }) {
+export default function BottomNav({ onTimeline, onInfo, onOpenAuthor, onOpenPanorama, onOpenMRT, ready, badgeReady }) {
     return (
         <motion.div
             className="fixed bottom-0 left-0 right-0 z-20 pointer-events-none"
@@ -71,7 +71,22 @@ export default function BottomNav({ onTimeline, onInfo, onOpenPanorama, onOpenMR
                                 <circle cx="9" cy="5.5" r="1" fill="currentColor" />
                             </svg>
                         }
-                        label="Informations"
+                        label="Infos"
+                    />
+
+                    {/* Divider */}
+                    <div className="w-px h-12 self-center mx-1 sm:mx-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,240,255,0.5), transparent)' }} />
+
+                    {/* Author button */}
+                    <NavButton
+                        onClick={onOpenAuthor}
+                        icon={
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                        }
+                        label="Auteur"
                     />
 
                     {/* Divider */}
@@ -86,7 +101,7 @@ export default function BottomNav({ onTimeline, onInfo, onOpenPanorama, onOpenMR
                                 <circle cx="12" cy="12" r="3" />
                             </svg>
                         }
-                        label="Vue 360"
+                        label="360°"
                     />
 
                     {/* Divider */}
@@ -108,7 +123,7 @@ export default function BottomNav({ onTimeline, onInfo, onOpenPanorama, onOpenMR
                 </motion.div>
             </div>
         </motion.div>
-    )
+    );
 }
 
 function NavButton({ onClick, icon, label, className = "", labelClassName = "text-white/80 group-hover:text-primary" }) {

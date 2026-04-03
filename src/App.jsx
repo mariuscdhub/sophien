@@ -12,6 +12,7 @@ import BottomNav from './components/BottomNav'
 import PanoramaViewer from './components/PanoramaViewer'
 import BadgeModal from './components/BadgeModal'
 import MissionReadinessTest from './components/MissionReadinessTest'
+import AuthorPanel from './components/AuthorPanel'
 
 export default function App() {
     // === App flow states ===
@@ -21,6 +22,7 @@ export default function App() {
     const [activeHotspot, setActiveHotspot] = useState(null)
     const [showTimeline, setShowTimeline] = useState(false)
     const [showInfo, setShowInfo] = useState(false)
+    const [showAuthor, setShowAuthor] = useState(false)
     const [showPanorama, setShowPanorama] = useState(false)
     const [badgeReady, setBadgeReady] = useState(false)
     const [showBadgeModal, setShowBadgeModal] = useState(false)
@@ -100,6 +102,7 @@ export default function App() {
                 badgeReady={badgeReady}
                 onTimeline={() => setShowTimeline(true)}
                 onInfo={() => setShowInfo(true)}
+                onOpenAuthor={() => setShowAuthor(true)}
                 onOpenPanorama={() => setShowPanorama(true)}
                 onOpenMRT={() => setShowMRT(true)}
             />
@@ -118,6 +121,12 @@ export default function App() {
             <InfoPanel
                 visible={showInfo}
                 onClose={() => setShowInfo(false)}
+            />
+
+            {/* Author panel */}
+            <AuthorPanel
+                visible={showAuthor}
+                onClose={() => setShowAuthor(false)}
             />
 
             {/* 360 Panorama Viewer */}
