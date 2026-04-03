@@ -13,9 +13,9 @@ export default function BottomNav({ onTimeline, onInfo, onOpenAuthor, onOpenPano
             animate={{ opacity: ready ? 1 : 0, y: ready ? 0 : 40 }}
             transition={{ duration: 0.6, delay: 1.2 }}
         >
-            <div className="flex justify-center pb-8 px-6 pointer-events-auto">
+            <div className="flex justify-center pb-8 px-2 sm:px-6 pointer-events-auto">
                 <motion.div
-                    className="flex md:gap-6 gap-1 sm:gap-3 px-2 sm:px-6 py-3 sm:py-4 rounded-3xl relative"
+                    className="flex md:gap-4 gap-0 sm:gap-2 px-1 sm:px-6 py-2 sm:py-4 rounded-3xl relative"
                     style={{
                         background: 'linear-gradient(135deg, rgba(8, 20, 35, 0.9) 0%, rgba(5, 11, 20, 0.95) 100%)',
                         backdropFilter: 'blur(20px)',
@@ -47,7 +47,7 @@ export default function BottomNav({ onTimeline, onInfo, onOpenAuthor, onOpenPano
                     <NavButton
                         onClick={onTimeline}
                         icon={
-                            <svg width="24" height="24" viewBox="0 0 18 18" fill="none" className="drop-shadow-lg">
+                            <svg width="20" height="20" viewBox="0 0 18 18" fill="none" className="drop-shadow-lg sm:w-6 sm:h-6">
                                 <path d="M3 3L3 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                                 <circle cx="3" cy="4.5" r="1.5" fill="currentColor" />
                                 <circle cx="3" cy="9" r="1.5" fill="currentColor" />
@@ -59,13 +59,13 @@ export default function BottomNav({ onTimeline, onInfo, onOpenAuthor, onOpenPano
                     />
 
                     {/* Divider */}
-                    <div className="w-px h-12 self-center mx-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,240,255,0.5), transparent)' }} />
+                    <div className="hidden sm:block w-px h-12 self-center mx-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,240,255,0.5), transparent)' }} />
 
                     {/* Info button */}
                     <NavButton
                         onClick={onInfo}
                         icon={
-                            <svg width="24" height="24" viewBox="0 0 18 18" fill="none" className="drop-shadow-lg">
+                            <svg width="20" height="20" viewBox="0 0 18 18" fill="none" className="drop-shadow-lg sm:w-6 sm:h-6">
                                 <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="1.5" />
                                 <path d="M9 8V13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
                                 <circle cx="9" cy="5.5" r="1" fill="currentColor" />
@@ -75,13 +75,13 @@ export default function BottomNav({ onTimeline, onInfo, onOpenAuthor, onOpenPano
                     />
 
                     {/* Divider */}
-                    <div className="w-px h-12 self-center mx-1 sm:mx-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,240,255,0.5), transparent)' }} />
+                    <div className="hidden sm:block w-px h-12 self-center mx-1 sm:mx-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,240,255,0.5), transparent)' }} />
 
                     {/* Author button */}
                     <NavButton
                         onClick={onOpenAuthor}
                         icon={
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="sm:w-6 sm:h-6">
                                 <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                                 <circle cx="12" cy="7" r="4" />
                             </svg>
@@ -90,13 +90,13 @@ export default function BottomNav({ onTimeline, onInfo, onOpenAuthor, onOpenPano
                     />
 
                     {/* Divider */}
-                    <div className="w-px h-12 self-center mx-1 sm:mx-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,240,255,0.5), transparent)' }} />
+                    <div className="hidden sm:block w-px h-12 self-center mx-1 sm:mx-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,240,255,0.5), transparent)' }} />
 
                     {/* Panorama button */}
                     <NavButton
                         onClick={onOpenPanorama}
                         icon={
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="drop-shadow-lg" stroke="currentColor" strokeWidth="1.5">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="drop-shadow-lg sm:w-6 sm:h-6" stroke="currentColor" strokeWidth="1.5">
                                 <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
                                 <circle cx="12" cy="12" r="3" />
                             </svg>
@@ -105,7 +105,7 @@ export default function BottomNav({ onTimeline, onInfo, onOpenAuthor, onOpenPano
                     />
 
                     {/* Divider */}
-                    <div className="w-px h-12 self-center mx-1 sm:mx-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,240,255,0.5), transparent)' }} />
+                    <div className="hidden sm:block w-px h-12 self-center mx-1 sm:mx-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,240,255,0.5), transparent)' }} />
 
                     {/* MRT Test button (always active) */}
                     <NavButton
@@ -113,7 +113,7 @@ export default function BottomNav({ onTimeline, onInfo, onOpenAuthor, onOpenPano
                         className="bg-[#ffbf00]/20 border border-[#ffbf00] hover:bg-[#ffbf00]/40 drop-shadow-[0_0_15px_rgba(255,191,0,0.5)]"
                         labelClassName="text-[#ffbf00] group-hover:text-amber-300"
                         icon={
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="drop-shadow-lg text-[#ffbf00]" stroke="currentColor" strokeWidth="1.5">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="drop-shadow-lg text-[#ffbf00] sm:w-6 sm:h-6" stroke="currentColor" strokeWidth="1.5">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                                 <path d="m9 12 2 2 4-4" />
                             </svg>
@@ -130,15 +130,14 @@ function NavButton({ onClick, icon, label, className = "", labelClassName = "tex
     return (
         <motion.button
             onClick={onClick}
-            className={`group flex flex-col items-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 rounded-2xl transition-all relative overflow-hidden ${className ? className : 'hover:bg-primary/10'}`}
-            style={{ minWidth: 70 }}
+            className={`group flex flex-col items-center gap-1 sm:gap-2 px-1 sm:px-6 py-2 rounded-2xl transition-all relative overflow-hidden min-w-[55px] sm:min-w-[80px] ${className ? className : 'hover:bg-primary/10'}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
         >
             <div className="relative z-10 transition-transform group-hover:-translate-y-1">
                 {icon}
             </div>
-            <span className={`font-tech text-[9px] sm:text-[11px] font-bold tracking-[0.1em] sm:tracking-[0.2em] uppercase text-shadow-glow ${labelClassName}`}>
+            <span className={`font-tech text-[7px] min-[380px]:text-[8px] sm:text-[11px] font-bold tracking-[0.05em] sm:tracking-[0.2em] uppercase text-shadow-glow ${labelClassName}`}>
                 {label}
             </span>
         </motion.button>
